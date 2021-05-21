@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/braxtongpoll/xen-assistant/issues"
   },
-  "homepage": "https://github.com/braxtongpoll/xen-assistant#readme"
+  "homepage": "https://github.com/braxtongpoll/xen-assistant#readme",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "mongoose": "^5.12.10"
+  }
 }
