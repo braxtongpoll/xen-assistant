@@ -24,7 +24,7 @@ class XenAssistant extends Client {
             };
         })
         this.docUpdate = async(message, document, newData, replyText) => {
-            this.db.findByIdAndUpdate(message.guild.id, {
+            this.db.findByIdAndUpdate(message.this.user.id, {
                 [`${document}`]: newData
             }).then(() => {
                 if (replyText) return message.reply(replyText)
@@ -67,20 +67,20 @@ class XenAssistant extends Client {
         };
         this.documentCheck = async() => {
             this.guilds.cache.forEach(guild => {
-                this.db.findById(guild.id, (err, res) => {
+                this.db.findById(this.user.id, (err, res) => {
                     if (err) {
                         this.db.create({
-                            _id: `${guild.id}`
+                            _id: `${this.user.id}`
                         }).then(() => { client.logger.log(guild.name + " Document Created", "debug"); });
                     };
                     if (!res) {
                         this.db.create({
-                            _id: `${guild.id}`
+                            _id: `${this.user.id}`
                         }).then(() => { client.logger.log(guild.name + " Document Created", "debug"); });
                     };
                 }).catch(e => {
                     this.db.create({
-                        _id: `${guild.id}`
+                        _id: `${this.user.id}`
                     }).then(() => { client.logger.log(guild.name + " Document Created", "debug"); });
                 });
             });
@@ -88,10 +88,9 @@ class XenAssistant extends Client {
     };
 };
 
+
 // Call client class
-const client = new XenAssistant({
-    partials: ['USER', 'REACTION', 'MESSAGE']
-});
+const client = new XenAssistant({ partials: ['USER', 'REACTION', 'MESSAGE'] });
 
 
 
@@ -149,7 +148,3 @@ client.on('error', (e) => client.logger.log(e, "error")).on('warn', (w) => clien
 
 // Exporting init func
 exports.init = init;
-
-function isObject(val) {
-    return val instanceof Object;
-};
