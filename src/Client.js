@@ -1,9 +1,6 @@
 const { Client, Collection, MessageEmbed } = require('discord.js');
 const { readdirSync } = require('fs');
 const { join } = require('path');
-const Discord = require(`discord.js`);
-const Youtube = require(`simple-youtube-api`);
-let dmMap = {};
 class XenAssistant extends Client {
     constructor(options = {}) {
         super(options);
@@ -12,7 +9,6 @@ class XenAssistant extends Client {
         this.logger = require(`./utils/logger`);
         this.utils = require(`./utils/utils`);
         this.db = require(`./schemas/data`);
-        this.table = require(`string-table`);
         // Prep command collection
         this.commands = new Collection();
         this.aliases = new Collection();
