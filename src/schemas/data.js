@@ -5,6 +5,7 @@ const main = new mongoose.Schema({
     prefix: { type: String, default: "." },
     cases: { type: Object, default: {} },
     partners: { type: Object, default: {} },
+    partnerChannel: { type: String, default: "" },
     partnerRoles: { type: String, default: "" },
     clients: { type: Object, default: {} },
     clientRoles: { type: String, defualt: "" },
