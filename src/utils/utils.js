@@ -23,3 +23,15 @@ function findMember(message, args) {
 };
 
 exports.findMember = findMember;
+
+function findRole(message, args) {
+    let role;
+    if (message.mentions.roles.first()) {
+        role = message.mentions.roles.first();
+    } else {
+        role = message.guild.roles.cache.find(c => c.id === args[0]);
+    };
+    return role;
+};
+
+exports.findRole = findRole;

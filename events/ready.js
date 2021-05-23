@@ -24,10 +24,11 @@ err => {
 
 function statusUpdate(client) {
     if (num == 0) {
+        let guild = client.guilds.cache.get("589528220601286678");
         client.user.setPresence({
             activity: {
-                name: `${client.users.cache.size} Members`,
-                type: "Watching"
+                name: `${guild.memberCount} Members`,
+                type: "WATCHING"
             },
             status: "online"
         });
@@ -37,7 +38,7 @@ function statusUpdate(client) {
             client.user.setPresence({
                 activity: {
                     name: `${res.clients.length} Clients`,
-                    type: "Watching"
+                    type: "WATCHING"
                 },
                 status: "online"
             });
