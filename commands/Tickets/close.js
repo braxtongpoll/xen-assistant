@@ -1,5 +1,6 @@
 const { MessageEmbed, MessageAttachment } = require(`discord.js`);
 const fs = require(`fs`);
+const path = require("path");
 exports.run = async(client, message, args) => {
     if (!message.channel.name.includes(`ticket`)) return message.reply(`You can only run this command in a ticket channel!`).then(a => a.delete({ timeout: 5000 })).catch(e => {});
     client.db.findById(client.user.id, async function(err, res) {
@@ -46,8 +47,8 @@ exports.run = async(client, message, args) => {
                     logger += `[${messages[msg].author.tag} (${messages[msg].author.id})]\n• Content: ${messages[msg].content}\n• Image: ${messages[msg].image}\n\n`;
                 }
             })
-            await fs.writeFileSync(`./src/ticket.txt`, logger);
-            const attach = new MessageAttachment(`./src/ticket.txt`, `${message.channel.name}.txt`);
+            await fs.writeFileSync(path.join(__dirname, "../", "../", "/src", "/local", "/ticket.txt"), logger);
+            const attach = new MessageAttachment(path.join(__dirname, "../", "../", "/src", "/local", "/ticket.txt"), `${message.channel.name}.txt`);
             embed.attachFiles(attach);
             logs.send(embed);
             client.db.findByIdAndUpdate(message.guild.id, {
