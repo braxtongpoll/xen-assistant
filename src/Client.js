@@ -1,6 +1,7 @@
 const { Client, Collection, MessageEmbed } = require('discord.js');
 const { readdirSync } = require('fs');
 const { join } = require('path');
+var num = 0;
 class XenAssistant extends Client {
     constructor(options = {}) {
         super(options);

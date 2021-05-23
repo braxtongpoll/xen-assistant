@@ -13,5 +13,7 @@ const main = new mongoose.Schema({
     ticketPanels: { type: Object, default: {} },
     reactionRoles: { type: Object, default: {} },
     welcome_channel: { type: String, default: null },
+    memberLogs: { type: String, default: null },
+    discordLogs: { type: String, default: null }
 });
 module.exports = mongoose.model(`main`, main);

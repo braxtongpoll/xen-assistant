@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/braxtongpoll/xen-assistant#readme",
   "dependencies": {
+    "canvas": "^2.8.0",
     "carden": "^4.0.0",
     "chalk": "^4.1.1",
     "discord.js": "^12.5.3",
