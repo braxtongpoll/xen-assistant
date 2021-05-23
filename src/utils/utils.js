@@ -11,3 +11,15 @@ function findChannel(message, args) {
 };
 
 exports.findChannel = findChannel;
+
+function findMember(message, args) {
+    let member;
+    if (message.mentions.members.first()) {
+        member = message.mentions.members.first();
+    } else {
+        member = message.guild.members.cache.find(c => c.id === args[0]);
+    };
+    return member;
+};
+
+exports.findMember = findMember;
