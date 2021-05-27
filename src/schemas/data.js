@@ -8,7 +8,7 @@ const main = new mongoose.Schema({
     partnerChannel: { type: String, default: "" },
     partnerRoles: { type: String, default: "" },
     clients: { type: Array, default: [] },
-    clientRoles: { type: String, defualt: "" },
+    clientRole: { type: String, defualt: "" },
     ticketPanels: { type: Object, default: {} },
     reactionRoles: { type: Object, default: {} },
     welcome_channel: { type: String, default: null },
